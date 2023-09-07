@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "[+] Cloning the source"
-git clone https://github.com/hixaa/eemsv2
-cd eemsv2
+git clone https://github.com/hixaa/silocountmonitoringsystem
+cd scms
 
 echo "[+] Starting Debloat"
 
