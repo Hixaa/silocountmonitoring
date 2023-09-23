@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "[+] Cloning the source"
-git clone https://github.com/hixaa/silocountmonitoringsystem
+git clone https://github.com/hixaa/silocountmonitoring
 cd scms
 
 echo "[+] Starting Debloat"
@@ -42,14 +42,14 @@ pip3 install requests
 pip3 install chardet
 sudo cp cleanup.sh /
 sudo chmod +x /cleanup.sh
-#sudo mv xaees/xaees.service /lib/systemd/system/
-#sudo cp -r xaees/* /
+sudo mv /home/pi/scms/code/scms.service /lib/systemd/system/
+#sudo cp -r scms/* /
 
-#echo "[-] Yet to make a service onboot"
-#sudo systemctl enable xaees
-#sudo systemctl start xaees
+echo "[+] service is being ON-BOOT"
+sudo systemctl enable scms
+sudo systemctl start scms
 
-#echo "[+] Enabled xaees for ON BOOT"
+echo "[+] Enabled scms for ON BOOT"
 
 echo "[+] Done with the installation"
 echo "[*] Please do a REBOOT"
