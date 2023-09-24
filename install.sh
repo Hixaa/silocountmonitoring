@@ -30,7 +30,8 @@ sudo apt install libgles-dev libegl-dev -y
 sudo ln -s /usr/lib/arm-linux-gnueabihf/libGLESv2.so /usr/lib/libbrcmGLESv2.so
 sudo ln -s /usr/lib/arm-linux-gnueabihf/libEGL.so /usr/lib/libbrcmEGL.so
 sudo ldconfig
-sudo apt install ./tools/anydesk_6.1.1-1_armhf.deb
+wget https://download.anydesk.com/rpi/anydesk_6.1.1-1_amd64.deb
+sudo apt install /home/pi/silocountmonitoring/scms/anydesk_6.1.1-1_armhf.deb
 
 echo "[+] Enable VNC"
 sudo systemctl enable vncserver-x11-serviced.service
@@ -42,7 +43,7 @@ pip3 install requests
 pip3 install chardet
 sudo cp cleanup.sh /
 sudo chmod +x /cleanup.sh
-sudo mv /home/pi/scms/code/scms.service /lib/systemd/system/
+sudo mv /home/pi/silocountmonitoring/scms/code/components/scms.service /lib/systemd/system/
 #sudo cp -r scms/* /
 
 echo "[+] service is being ON-BOOT"
