@@ -43,7 +43,7 @@ pip3 install requests
 pip3 install chardet
 sudo cp cleanup.sh /
 sudo chmod +x /cleanup.sh
-sudo mv /home/pi/silocountmonitoring/scms/code/scms.service /lib/systemd/system/
+sudo mv scms/scms.service /lib/systemd/system/
 sudo cp -r scms/* /
 
 echo "[+] service is being ON-BOOT"
