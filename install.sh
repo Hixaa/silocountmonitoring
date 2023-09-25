@@ -2,7 +2,7 @@
 
 echo "[+] Cloning the source"
 git clone https://github.com/hixaa/silocountmonitoring
-cd scms
+cd silocountmonitoring
 
 echo "[+] Starting Debloat"
 
