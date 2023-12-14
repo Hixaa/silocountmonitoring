@@ -35,7 +35,8 @@ class Door:
             self.__doorData = {"DateTime":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"ClientId":str(self.__clientId),"DeviceId":str(self.__deviceId),"DoorDeviceStatus":self.__param}
             payload = json.dumps(self.__doorData)
             resp = requests.request("POST", self.__doorStatURL, headers = self.__headers, data=payload)
-            if(resp.status_code == 200):
+            # if(resp.status_code == 200):
+            if(resp.json().get("status" == "1")):    #CHANGED
                 print("[+] Door Status Uploaded - Open")
             else:
                 print("[-] Door Upload Failed - Open")
@@ -52,7 +53,8 @@ class Door:
             self.__doorData = {"DateTime":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"ClientId":str(self.__clientId),"DeviceId":str(self.__deviceId),"DoorDeviceStatus":self.__param}
             payload = json.dumps(self.__doorData)
             resp = requests.request("POST", self.__doorStatURL, headers = self.__headers, data=payload)
-            if(resp.status_code == 200):
+            # if(resp.status_code == 200):
+            if(resp.json().get("status") == "1"):    #CHANGED
                 print("[+] Door Status Uploaded - Close")
             else:
                 print("[-] Door Upload Failed - Close")
