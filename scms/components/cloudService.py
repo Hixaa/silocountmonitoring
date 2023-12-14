@@ -32,7 +32,8 @@ class CloudService:
             print("\t\t ENTRY: ", payload)
             resp = requests.request("POST", self.__countURL, headers=self.__headers, data=payload) 
         
-            if(resp.status_code == 200):
+            # if(resp.status_code == 200):
+            if(resp.json().get("status") == "1"): #CHANGED
                 print("[+] Successfully Added Data!")
                 self.__ledStat.dataUpload_Show()
             else:
@@ -59,7 +60,8 @@ class CloudService:
 
                     # print("[+] Payload: ", payload)
                     # print("[+] Status Code: ", resp.status_code)
-                    if(resp.status_code == 200):
+                    # if(resp.status_code == 200):
+                    if(resp.json().get("status") == "1"): #CHANGED
                         print("[+] Successfully Added Data!")
                         self.__ledStat.dataUpload_Show()
                         self.__storeData.truncateFile()
