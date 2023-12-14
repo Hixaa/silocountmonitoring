@@ -23,7 +23,8 @@ class Heartbeat:
             #print("HeartBeat: Payload: ",payload)
             self.__resp = requests.request("POST", self.__urlHeartbit , headers = self.__headers, data = payload)
         
-            if self.__resp.status_code == 200:
+            # if self.__resp.status_code == 200:
+            if(self.__resp.json().get("status") == "1"):    #CHANGED
                 print("[+]","HeartBeat - Heartbeat sent successfully!")
             else:
                 print("[-]","HeartBeat - Network issue!")
