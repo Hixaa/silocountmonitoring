@@ -1,3 +1,5 @@
+import tempfile
+import shutil
 import configparser
 import os
 from pathlib import Path
@@ -23,10 +25,24 @@ class Config:
     def setCount(self,count):
         parser = configparser.ConfigParser()
         parser.read(self.__countConfigPath)
-        count_config = parser['COUNT']
-        count_config['signalCount'] = str(count)
-        with open(self.__countConfigPath,'w') as configfile:
-            parser.write(configfile)
+        # count_config = parser['COUNT']
+        # count_config['signalCount'] = str(count)
+        parser.set('COUNT','signalCount', str(count)) #CHANGED from here
+
+        temp_file_path = tempfile.mktemp()
+        with open(temp_file_path,'w') as temp_file:
+            parser.write(temp_file)
+
+        try:
+            shutil.move(temp_file_path, self.__countConfigPath)
+            print(f"[*] Updated Value: {count}")
+
+        except:
+            print(f"[!] ERROR: {e}")
+
+        finally:
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path) #To here 
 #####################################################################
 
 ################***GPIO for Giving Status***#########################
